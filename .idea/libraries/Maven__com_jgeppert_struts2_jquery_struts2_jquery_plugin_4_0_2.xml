@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.jgeppert.struts2.jquery:struts2-jquery-plugin:4.0.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jgeppert/struts2/jquery/struts2-jquery-plugin/4.0.2/struts2-jquery-plugin-4.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jgeppert/struts2/jquery/struts2-jquery-plugin/4.0.2/struts2-jquery-plugin-4.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/jgeppert/struts2/jquery/struts2-jquery-plugin/4.0.2/struts2-jquery-plugin-4.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

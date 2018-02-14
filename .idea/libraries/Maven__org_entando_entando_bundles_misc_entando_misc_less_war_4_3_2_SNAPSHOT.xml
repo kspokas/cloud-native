@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.entando.entando.bundles.misc:entando-misc-less:war:4.3.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/entando/entando/bundles/misc/entando-misc-less/4.3.2-SNAPSHOT/entando-misc-less-4.3.2-SNAPSHOT.war!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/entando/entando/bundles/misc/entando-misc-less/4.3.2-SNAPSHOT/entando-misc-less-4.3.2-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/entando/entando/bundles/misc/entando-misc-less/4.3.2-SNAPSHOT/entando-misc-less-4.3.2-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

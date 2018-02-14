@@ -1,0 +1,20 @@
+----------------------------------------------------------------
+Mon Feb 12 11:04:24 CET 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0161-8978-f92e-00001a301fe0 
+on database directory /home/pmasala/Development/entando-ux-packages/portalexample/target/test/db/portalexampletestPort  with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/home/pmasala/.m2/repository/org/apache/derby/derby/10.9.1.0/derby-10.9.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_144-b01
+user.dir=/home/pmasala/Development/entando-ux-packages/portalexample
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Feb 12 11:04:27 CET 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a05c0120-0161-8978-f92e-00001a301fe0 
+on database directory /home/pmasala/Development/entando-ux-packages/portalexample/target/test/db/portalexampletestServ  with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/home/pmasala/.m2/repository/org/apache/derby/derby/10.9.1.0/derby-10.9.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_144-b01
+user.dir=/home/pmasala/Development/entando-ux-packages/portalexample
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
