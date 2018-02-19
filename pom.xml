@@ -5,7 +5,7 @@
     <groupId>org.entando.entando</groupId>
     <artifactId>portalexample</artifactId>
     <packaging>war</packaging>
-    <version>4.3.2-SNAPSHOT</version>
+    <version>4.3.2-CN</version>
     <name>portalexample</name>
     <description>A Portal Example for Entando</description>
     <url>http://www.entando.com/</url>
@@ -107,22 +107,6 @@
                 <jboss>jboss</jboss>
             </properties>
         </profile>
-
-        <!-- Added for OpenShift -->
-        <profile>
-            <id>openshift</id>
-            <activation>
-                <property>
-                    <name>env.MAVEN_WORKING_MODE</name>
-                    <value>openshift</value>
-                </property>
-            </activation>
-            <properties>
-                <env>openshift</env>
-                <env.db.environment>production</env.db.environment>
-                <jboss>jboss</jboss>
-            </properties>
-        </profile>
 		
     </profiles>
     <properties>
@@ -154,11 +138,10 @@
 
         <skipDerby>true</skipDerby>
         <skipStandalone>true</skipStandalone>
-        <entando.version>4.3.2-SNAPSHOT</entando.version>
+        <entando.version>4.3.2-CN</entando.version>
         <spring.version>4.1.6.RELEASE</spring.version>
         <struts2.version>2.5.10.1</struts2.version>
         <cxf.version>2.7.14</cxf.version>
-        <version.kubernetes-ping>0.9.3</version.kubernetes-ping>
     </properties>
     <build>
         <finalName>portalexample</finalName>
@@ -316,6 +299,27 @@
                                     <directory>src/main/config</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-security-conf</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/WEB-INF/conf</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config</directory>
+                                    <includes>
+                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
@@ -694,11 +698,6 @@
                             </includes>
                         </resource>
                     </webResources>
-		    <archive>
-                    	<manifestEntries>
-                            <Dependencies>org.infinispan, org.infinispan.commons, org.jboss.as.clustering.infinispan export</Dependencies>
-                        </manifestEntries>
-                    </archive>
                 </configuration>
             </plugin>
             <plugin>
@@ -978,17 +977,6 @@
             <artifactId>entando-plugin-jpinfinispan</artifactId>
             <version>${entando.version}</version>
             <type>war</type>
-        </dependency>
-		
-		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-spring</artifactId>
-			<version>7.2.5.Final</version>
-		</dependency>
-        <dependency>
-            <groupId>org.jgroups.kubernetes</groupId>
-            <artifactId>kubernetes</artifactId>
-            <version>${version.kubernetes-ping}</version>
         </dependency>
 		
     </dependencies>
