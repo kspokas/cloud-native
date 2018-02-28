@@ -11,8 +11,8 @@
                         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
                         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" >
     
-    <jee:jndi-lookup id="portDataSource" jndi-name="java:jboss/datasources/entandoDbPort"/>
+    <jee:jndi-lookup id="portDataSource" jndi-name="java:jboss/datasources/entandoDbPort2"/>
     
-    <jee:jndi-lookup id="servDataSource" jndi-name="java:jboss/datasources/entandoDbServ"/>
+    <jee:jndi-lookup id="servDataSource" jndi-name="java:jboss/datasources/entandoDbServ2"/>
 	
 </beans>
