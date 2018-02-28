@@ -1012,11 +1012,10 @@
         </dependency>
 		
 		<dependency>
-            <groupId>org.entando.entando.plugins</groupId>
-            <artifactId>entando-plugin-jpinfinispan</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-spring</artifactId>
+			<version>7.2.5.Final</version>
+		</dependency>
 		
     </dependencies>
 </project>
