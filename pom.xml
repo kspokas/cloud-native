@@ -107,6 +107,22 @@
                 <jboss>jboss</jboss>
             </properties>
         </profile>
+	
+	<!-- Added for OpenShift -->
+        <profile>
+            <id>openshift</id>
+            <activation>
+                <property>
+                    <name>env.MAVEN_WORKING_MODE</name>
+                    <value>openshift</value>
+                </property>
+            </activation>
+            <properties>
+                <env>openshift</env>
+                <env.db.environment>production</env.db.environment>
+                <jboss>jboss</jboss>
+            </properties>
+        </profile>
 		
     </profiles>
     <properties>
@@ -996,11 +1012,10 @@
         </dependency>
 		
 		<dependency>
-            <groupId>org.entando.entando.plugins</groupId>
-            <artifactId>entando-plugin-jpinfinispan</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-spring</artifactId>
+			<version>7.2.5.Final</version>
+		</dependency>
 		
     </dependencies>
 </project>
