@@ -109,20 +109,20 @@
         </profile>
 	
 	<!-- Added for OpenShift -->
--        <profile>
--            <id>openshift</id>
--            <activation>
--                <property>
--                    <name>env.MAVEN_WORKING_MODE</name>
--                    <value>openshift</value>
--                </property>
--            </activation>
--            <properties>
--                <env>openshift</env>
--                <env.db.environment>production</env.db.environment>
--                <jboss>jboss</jboss>
--            </properties>
--        </profile>
+        <profile>
+            <id>openshift</id>
+            <activation>
+                <property>
+                    <name>env.MAVEN_WORKING_MODE</name>
+                    <value>openshift</value>
+                </property>
+            </activation>
+            <properties>
+                <env>openshift</env>
+                <env.db.environment>production</env.db.environment>
+                <jboss>jboss</jboss>
+            </properties>
+        </profile>
 		
     </profiles>
     <properties>
