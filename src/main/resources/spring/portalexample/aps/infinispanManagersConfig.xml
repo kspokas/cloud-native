@@ -20,7 +20,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
 	<jee:jndi-lookup id="nativeCacheManager" 
-        jndi-name="java:jboss/infinispan/container/entando"/>
+        jndi-name="java:jboss/infinispan/container/server"/>
 	
 	<!-- SPRING OBJECT -->
 	<bean id="springCacheManager" class="org.infinispan.spring.provider.SpringEmbeddedCacheManager">
