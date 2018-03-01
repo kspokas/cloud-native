@@ -5,8 +5,8 @@
     <groupId>org.entando.entando</groupId>
     <artifactId>portalexample</artifactId>
     <packaging>war</packaging>
-    <version>4.3.2-CN</version>
-    <name>portalexample</name>
+    <version>4.3.2-PCN</version>
+    <name>portalexample PCN</name>
     <description>A Portal Example for Entando</description>
     <url>http://www.entando.com/</url>
     <licenses>
@@ -154,7 +154,7 @@
 
         <skipDerby>true</skipDerby>
         <skipStandalone>true</skipStandalone>
-        <entando.version>4.3.2-CN</entando.version>
+        <entando.version>4.3.2-PCN</entando.version>
         <spring.version>4.1.6.RELEASE</spring.version>
         <struts2.version>2.5.10.1</struts2.version>
         <cxf.version>2.7.14</cxf.version>
@@ -703,41 +703,23 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
-				<configuration>
-					<packagingExcludes> WEB-INF/classes/**/*.tld, WEB-INF/lib/log4j-api-2.7.jar, WEB-INF/lib/log4j-core-2.5.jar, WEB-INF/lib/log4j-jcl-2.5.jar, WEB-INF/lib/log4j-slf4j-impl-2.5.jar </packagingExcludes>
-					<overlays>
-						<!-- <overlay> <groupId>org.entando.entando</groupId> <artifactId>entando-engine</artifactId> <excludes> <exclude>WEB-INF/classes/**/*.tld</exclude> <exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude> <exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude> <exclude>WEB-INF/lib/log4j-core-2.5.jar</exclude> <exclude>WEB-INF/lib/log4j-jcl-2.5.jar</exclude> <exclude>WEB-INF/lib/log4j-slf4j-impl-2.5.jar</exclude> </excludes> </overlay> -->
-						<overlay>
-							<groupId>org.entando.entando</groupId>
-							<artifactId>entando-admin-console</artifactId>
-							<excludes>
-								<exclude>WEB-INF/classes/**/*.tld</exclude>
-								<exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-core-2.5.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-jcl-2.5.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-slf4j-impl-2.5.jar</exclude>
-							</excludes>
-						</overlay>
-						<overlay>
-							<groupId>org.entando.entando</groupId>
-							<artifactId>entando-portal-ui</artifactId>
-							<excludes>
-								<exclude>WEB-INF/classes/**/*.tld</exclude>
-								<exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-api-2.7.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-core-2.5.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-jcl-2.5.jar</exclude>
-								<exclude>WEB-INF/lib/log4j-slf4j-impl-2.5.jar</exclude>
-							</excludes>
-						</overlay>
-					</overlays>
+                <configuration>
+                    <packagingExcludes>WEB-INF/classes/**/*.tld<!--,resources/static/entando-misc-bootstrap/**--></packagingExcludes>
+                    <webResources>
+                        <resource>
+                            <directory>${project.build.directory}/entando-misc-bootstrap/resources/static/entando-misc-bootstrap/bootstrap</directory>
+                            <targetPath>resources/static</targetPath>
+                            <includes>
+                                <include>bootstrap/**</include>
+                            </includes>
+                        </resource>
+                    </webResources>
 					<archive>
 						<manifestEntries>
 							<Dependencies>org.infinispan, org.infinispan.commons, org.jboss.as.clustering.infinispan export</Dependencies>
 						</manifestEntries>
 					</archive>
-				</configuration>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.lesscss</groupId>
@@ -1016,6 +998,6 @@
 			<artifactId>infinispan-spring</artifactId>
 			<version>7.2.5.Final</version>
 		</dependency>
-		
+
     </dependencies>
 </project>

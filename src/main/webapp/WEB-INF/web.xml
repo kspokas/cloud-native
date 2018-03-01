@@ -2,6 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false" version="3.0">
+    <distributable/>
     <display-name>portalexample - powered by Entando</display-name>
     <description>portalexample - powered by Entando</description>
     <context-param>
@@ -10,6 +11,7 @@
             classpath:spring/propertyPlaceholder.xml
             classpath:spring/restServerConfig.xml
             classpath:spring/baseSystemConfig.xml
+            classpath:spring/jbossBaseSystemConfig.xml
             classpath*:spring/aps/**/**.xml
             classpath*:spring/apsadmin/**/**.xml
             classpath*:spring/plugins/**/aps/**/**.xml
@@ -26,9 +28,9 @@
         <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/apsadmin/tiles.xml,/WEB-INF/plugins/**/apsadmin/**tiles.xml,/WEB-INF/portalexample/apsadmin/portalexample-tiles.xml</param-value>
     </context-param>
-    <context-param>
-        <param-name>contextClass</param-name>
-        <param-value>org.entando.entando.aps.system.XmlWebApplicationContext</param-value>
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.entando.entando.aps.system.XmlWebApplicationContext</param-value>
     </context-param>
     <filter>
         <filter-name>struts2</filter-name>
@@ -42,10 +44,10 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/do/*</url-pattern>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>/struts/*</url-pattern>
-    </filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/struts/*</url-pattern>
+	</filter-mapping>
     <filter-mapping>
         <filter-name>XSSFilter</filter-name>
         <url-pattern>*.wp</url-pattern>
@@ -67,9 +69,9 @@
     <listener>
         <listener-class>org.entando.entando.apsadmin.system.resource.EntandoPluginLabelListener</listener-class>
     </listener>
-    <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
         <servlet-class>org.entando.entando.aps.servlet.ControllerServlet</servlet-class>
@@ -96,12 +98,16 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
+        <servlet-name>RequestTokenServlet</servlet-name>
+        <servlet-class>org.entando.entando.aps.servlet.RequestTokenOAuthServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AuthorizationServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.AuthEndpointServlet</servlet-class>
+        <servlet-class>org.entando.entando.aps.servlet.AuthorizationOAuthServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AccessTokenServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.TokenEndpointServlet</servlet-class>
+        <servlet-class>org.entando.entando.aps.servlet.AccessTokenOAuthServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
@@ -132,12 +138,16 @@
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>RequestTokenServlet</servlet-name>
+        <url-pattern>/OAuth/request_token</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AuthorizationServlet</servlet-name>
-        <url-pattern>/OAuth2/authorize</url-pattern>
+        <url-pattern>/OAuth/authorize</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AccessTokenServlet</servlet-name>
-        <url-pattern>/OAuth2/access_token</url-pattern>
+        <url-pattern>/OAuth/access_token</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
@@ -158,4 +168,70 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.jsp</location>
     </error-page>
+
+
+    <!-- envs used by jBoss : start -->
+    <env-entry>
+        <env-entry-name>logName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>portalexample.log</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>logFilePrefix</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>C:\\projects\\github\\cloud-native\\target\\log_portalexample</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>logLevel</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>INFO</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>logFileSize</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>200000</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>logFilesCount</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>10</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>configVersion</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>production</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>applicationBaseURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>${profile.application.baseurl.protocol}://localhost:8080/portalexample/</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>resourceRootURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>/portalexample/resources/</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>protectedResourceRootURL</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>/portalexample/protected/</env-entry-value>
+    </env-entry>
+
+    <env-entry>
+        <env-entry-name>resourceDiskRootFolder</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>C:\\projects\\github\\cloud-native\\src\\main\\webapp\\resources</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>protectedResourceDiskRootFolder</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>C:\\projects\\github\\cloud-native\\src\\main\\webapp\\protected</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>indexDiskRootFolder</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>C:\\projects\\github\\cloud-native\\target\\temp\\indexdir</env-entry-value>
+    </env-entry>
+    <!-- envs used by jBoss : end -->
+	
 </web-app>
