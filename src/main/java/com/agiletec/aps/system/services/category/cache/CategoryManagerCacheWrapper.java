@@ -155,7 +155,7 @@ public class CategoryManagerCacheWrapper extends AbstractCacheWrapper implements
         this.customCache = customCache;
     }
 
-    @Resource(lookup = "java:jboss/infinispan/entando/Entando_CategoryManager")
+    @Resource(lookup = "java:jboss/infinispan/server/Entando_CategoryManager")
     private Map<String, Object> customCache;
 
 }
