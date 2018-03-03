@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="false" version="3.0">
-    <distributable/>
+	<distributable/>
     <display-name>portalexample - powered by Entando</display-name>
     <description>portalexample - powered by Entando</description>
     <context-param>
@@ -168,8 +168,7 @@
         <exception-type>java.lang.Exception</exception-type>
         <location>/error.jsp</location>
     </error-page>
-
-
+	
     <!-- envs used by jBoss : start -->
     <env-entry>
         <env-entry-name>logName</env-entry-name>
@@ -179,12 +178,12 @@
     <env-entry>
         <env-entry-name>logFilePrefix</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>C:\\projects\\github\\cloud-native\\target\\log_portalexample</env-entry-value>
+        <env-entry-value>/home/pmasala/JBossDomainTest/logs/portalexample_log</env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>logLevel</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>INFO</env-entry-value>
+        <env-entry-value>WARN</env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>logFileSize</env-entry-name>
@@ -204,7 +203,7 @@
     <env-entry>
         <env-entry-name>applicationBaseURL</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>${profile.application.baseurl.protocol}://localhost:8080/portalexample/</env-entry-value>
+        <env-entry-value>${profile.application.baseurl.protocol}://localhost/portalexample/</env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>resourceRootURL</env-entry-name>
@@ -216,21 +215,21 @@
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>/portalexample/protected/</env-entry-value>
     </env-entry>
-
+	
     <env-entry>
         <env-entry-name>resourceDiskRootFolder</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>C:\\projects\\github\\cloud-native\\src\\main\\webapp\\resources</env-entry-value>
+        <env-entry-value>/home/pmasala/JBossDomainTest/domain/data/portalexample/resources</env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>protectedResourceDiskRootFolder</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>C:\\projects\\github\\cloud-native\\src\\main\\webapp\\protected</env-entry-value>
+        <env-entry-value>/home/pmasala/JBossDomainTest/domain/data/portalexample/protected</env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>indexDiskRootFolder</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>C:\\projects\\github\\cloud-native\\target\\temp\\indexdir</env-entry-value>
+        <env-entry-value>/home/pmasala/JBossDomainTest/domain/data/portalexample/indexdir</env-entry-value>
     </env-entry>
     <!-- envs used by jBoss : end -->
 	
