@@ -717,6 +717,7 @@
 					<archive>
 						<manifestEntries>
 							<Dependencies>org.infinispan, org.infinispan.commons, org.jboss.as.clustering.infinispan export</Dependencies>
+							<!-- <Dependencies>org.infinispan, org.jboss.as.clustering.infinispan, org.infinispan.commons export</Dependencies> -->
 						</manifestEntries>
 					</archive>
                 </configuration>
@@ -996,7 +997,47 @@
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-spring</artifactId>
-			<version>7.2.5.Final</version>
+			<version>8.2.8.Final</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.infinispan</groupId>
+					<artifactId>infinispan-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jgroups</groupId>
+					<artifactId>jgroups</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.jboss.marshalling</groupId>
+					<artifactId>jboss-marshalling-osgi</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.cache</groupId>
+		    <artifactId>cache-api</artifactId>
+		    <version>1.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-core</artifactId>
+			<version>8.2.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
     </dependencies>

@@ -232,5 +232,19 @@
         <env-entry-value>${profile.index.path}</env-entry-value>
     </env-entry>
     <!-- envs used by jBoss : end -->
-	
+	<resource-env-ref>  
+	  <resource-env-ref-name>categoryCache</resource-env-ref-name>  
+	  <resource-env-ref-type>org.infinispan.Cache</resource-env-ref-type>  
+	  <lookup-name>java:jboss/infinispan/cache/entando/Entando_CategoryManager</lookup-name>  
+	</resource-env-ref>
+	<resource-env-ref>  
+	  <resource-env-ref-name>languageCache</resource-env-ref-name>  
+	  <resource-env-ref-type>org.infinispan.Cache</resource-env-ref-type>  
+	  <lookup-name>java:jboss/infinispan/cache/entando/Entando_LangManager</lookup-name>  
+	</resource-env-ref>
+	<!-- <resource-env-ref>  
+	  <resource-env-ref-name>nativeCacheManager</resource-env-ref-name>  
+	  <resource-env-ref-type>org.infinispan.manager.EmbeddedCacheManager</resource-env-ref-type>  
+	  <lookup-name>java:jboss/infinispan/container/entando</lookup-name>  
+	</resource-env-ref> -->
 </web-app>

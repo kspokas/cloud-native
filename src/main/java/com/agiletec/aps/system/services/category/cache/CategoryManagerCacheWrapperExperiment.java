@@ -13,27 +13,30 @@
  */
 package com.agiletec.aps.system.services.category.cache;
 
-import com.agiletec.aps.system.common.AbstractCacheWrapper;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.infinispan.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.agiletec.aps.system.exception.ApsSystemException;
 import com.agiletec.aps.system.services.category.Category;
 import com.agiletec.aps.system.services.category.ICategoryDAO;
 import com.agiletec.aps.system.services.lang.ILangManager;
 import com.agiletec.aps.system.services.lang.Lang;
 import com.agiletec.aps.util.ApsProperties;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Resource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author E.Santoboni
  */
-public class CategoryManagerCacheWrapper extends AbstractCacheWrapper implements ICategoryManagerCacheWrapper {
+public class CategoryManagerCacheWrapperExperiment implements ICategoryManagerCacheWrapper {
 
-    private static final Logger logger = LoggerFactory.getLogger(CategoryManagerCacheWrapper.class);
+    private static final Logger logger = LoggerFactory.getLogger(CategoryManagerCacheWrapperExperiment.class);
 
     @Override
     public void initCache(ICategoryDAO categoryDAO, ILangManager langManager) throws ApsSystemException {
@@ -126,7 +129,7 @@ public class CategoryManagerCacheWrapper extends AbstractCacheWrapper implements
         return (Category) this.getCustomCache().get(CATEGORY_ROOT_CACHE_NAME);
     }
 
-    @Override
+    //@Override
     protected String getCacheName() {
         return CATEGORY_MANAGER_CACHE_NAME;
     }
@@ -146,16 +149,18 @@ public class CategoryManagerCacheWrapper extends AbstractCacheWrapper implements
         this.getCustomCache().put(CATEGORY_STATUS_CACHE_NAME, statusMap);
     }
 
-    public Map<String, Object> getCustomCache() {
+    public Cache getCustomCache() {
         System.out.println("CACHE -> " + this.customCache.getClass());
         return customCache;
     }
 
-    public void setCustomCache(Map<String, Object> customCache) {
+    public void setCustomCache(Cache customCache) {
+    		logger.error("SETTING CACHE!!");
+    		System.err.println("" + Thread.currentThread().getStackTrace());
         this.customCache = customCache;
     }
 
-    @Resource(lookup = "java:jboss/infinispan/server/Entando_CategoryManager")
-    private Map<String, Object> customCache;
-
+    //@Resource(lookup = "java:jboss/infinispan/container/entando/Entando_CatalogManager")
+    @Resource(name = "categoryCache")
+    private Cache customCache;
 }
